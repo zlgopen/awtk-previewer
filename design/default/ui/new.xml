@@ -1,0 +1,4 @@
+<window anim_hint="htranslate">
+  <label x="c" y="m" w="80%" h="30" name="info" text="Hello"/>
+  <button x="c" y="b:30" w="80" h="30" name="close" text="Close"/>
+</window>
