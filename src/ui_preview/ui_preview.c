@@ -21,6 +21,7 @@
 
 #include "tkc/fs.h"
 #include "tkc/mem.h"
+#include "tkc/path.h"
 #include "tkc/utils.h"
 #include "base/input_method.h"
 #include "httpd/http_route.h"
@@ -83,7 +84,6 @@ static ret_t ui_preview_on_get_screenshot(http_connection_t* c) {
   ret_t ret = RET_FAIL;
   uint8_t* tdata = NULL;
   unsigned char* png_data = NULL;
-  conf_doc_t* resp = c->resp;
   widget_t* wm = window_manager();
   const char* header = "Content-Type: image/png\r\n";
   widget_t* element = window_manager_get_top_window(wm);
@@ -147,7 +147,7 @@ static ret_t ui_preview_on_update_ui(http_connection_t* c) {
     ui_builder_t* builder = ui_builder_default("preview");
     return_value_if_fail(loader != NULL && builder != NULL, RET_BAD_PARAMS);
 
-    ui_loader_load(loader, xml, strlen(xml), builder);
+    ui_loader_load(loader, (const uint8_t*)xml, strlen(xml), builder);
 
     if (app->widget != NULL) {
       widget_destroy(app->widget);

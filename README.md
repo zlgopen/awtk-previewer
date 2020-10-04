@@ -36,7 +36,6 @@ cd awtk-previewer; scons
 ./scripts/update_res.py all
 ```
 
-
 ```
 bin/previewer
 ```
