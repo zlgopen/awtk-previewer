@@ -144,7 +144,7 @@ static ret_t ui_preview_on_update_ui(http_connection_t* c) {
 
   if (xml != NULL) {
     ui_loader_t* loader = xml_ui_loader();
-    ui_builder_t* builder = ui_builder_default("preview");
+    ui_builder_t* builder = ui_builder_default_create("preview");
     return_value_if_fail(loader != NULL && builder != NULL, RET_BAD_PARAMS);
 
     ui_loader_load(loader, (const uint8_t*)xml, strlen(xml), builder);
@@ -158,6 +158,7 @@ static ret_t ui_preview_on_update_ui(http_connection_t* c) {
     if (app->widget != NULL) {
       widget_set_prop_str(app->widget, WIDGET_PROP_ANIM_HINT, "");
     }
+    ui_builder_destroy(builder);
   }
 
   conf_doc_set_int(resp, STR_STATUS, 0);
