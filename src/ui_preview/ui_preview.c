@@ -23,7 +23,9 @@
 #include "tkc/mem.h"
 #include "tkc/path.h"
 #include "tkc/utils.h"
+#include "base/main_loop.h"
 #include "base/input_method.h"
+#include "httpd/httpd.h"
 #include "httpd/http_route.h"
 #include "httpd/http_parser.h"
 
